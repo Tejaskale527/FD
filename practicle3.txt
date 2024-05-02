@@ -1,0 +1,103 @@
+Q.) Write a Pythonprogram for department library which has N books, write
+functions for following:
+a)Delete the duplicate entries
+b) Display books in ascending order based on cost of books
+c) Count number of books with cost more than 500.
+d)Copy books in a new list which has cost less than 500."""
+
+
+cost=[]
+bname=[]
+while True:
+data=input()
+if(data==""):
+break
+else:
+data=data.split(" ")
+bname.append(data[0])
+cost.append(int(data[1]))
+print(bname)
+print(cost)
+def duplicate():
+p=len(bname)
+for i in range(0,p):
+for j in range(i+1,p):
+if(bname[i]==bname[j]):
+del bname[j]
+del cost[j]
+p=len(bname)
+print("***** after deletion of duplicate elemnt ***** ")
+for i in range(0, len(bname)):
+print(bname[i],cost[i])
+def sorting1():
+for i in range(0,len(cost)):
+for j in range(i+1,len(cost)):
+if(cost[i]>cost[j]):
+temp=cost[i];
+temp1=bname[i]
+cost[i]=cost[j]
+bname[i]=bname[j]
+cost[j]=temp
+bname[j]=temp1
+print("************* after sorting according to cost ***************")
+for i in range(0,len(bname)):
+print(bname[i],"",cost[i])
+def count1():
+counter=0;
+print("************* number of books having cost more than 500 *****************")
+for i in range(0,len(cost)):
+if(cost[i]>500):
+counter=counter+1
+print(bname[i]," ",cost[i])
+print("total count=",counter)
+def copylist():
+
+list1=[]
+list2=[]
+print("************* list of books having cost less than 500 *****************")
+for i in range(0,len(cost)):
+if(cost[i]<500):
+list1.append(bname[i])
+list2.append(cost[i])
+for i in range(0, len(list1)):
+print(list1[i]," ",list2[i])
+duplicate()
+sorting1()
+count1()
+copylist()
+
+"""********************OUTPUT ***************************
+/home/student/PycharmProjects/fdassignment2/venv/bin/python
+/home/student/PycharmProjects/fdassignment2/AS3.py
+JAVA 500
+C 600
+CPP 700
+DS 300
+DSP 100
+MP 450
+JAVA 200
+['JAVA', 'C', 'CPP', 'DS', 'DSP', 'MP', 'JAVA']
+[500, 600, 700, 300, 100, 450, 200]
+***** after deletion of duplicate elemnt *****
+JAVA 500
+C 600
+CPP 700
+DS 300
+DSP 100
+MP 450
+************* after sorting according to cost ***************
+DSP 100
+DS 300
+MP 450
+JAVA 500
+C 600
+CPP 700
+************* number of books having cost more than 500 *****************
+C 600
+CPP 700
+total count= 2
+************* list of books having cost less than 500 *****************
+DSP 100
+DS 300
+MP 450
+Process finished with exit code 0 """
